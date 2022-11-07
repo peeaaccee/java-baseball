@@ -14,6 +14,16 @@ public class ComputerNumber {
     static final int LAST_NUM = 9;
     static final int MAX_DIGIT = 3;
 
+    public List<Integer> makeComputerNumber() {
+        List<Integer> number = makeRandomNumber();
+
+        while (true) {
+            if (validateNumber(number)){
+                return number;
+            }
+        }
+    }
+
     public List<Integer> makeRandomNumber() {
         List<Integer> radomNum = new ArrayList<>();
 
