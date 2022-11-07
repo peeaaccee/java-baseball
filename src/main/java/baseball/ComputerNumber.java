@@ -2,8 +2,10 @@ package baseball;
 
 
 import camp.nextstep.edu.missionutils.Randoms;
+import org.assertj.core.util.Sets;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class ComputerNumber {
@@ -20,5 +22,10 @@ public class ComputerNumber {
         }
 
         return radomNum;
+    }
+
+    public boolean validateNumber(List<Integer> num) {
+        HashSet<Integer> setNum = Sets.newHashSet(num);
+        return setNum.size() == num.size();
     }
 }
