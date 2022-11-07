@@ -22,7 +22,15 @@ public class User {
         for (int i = 0; i < inputValue.length(); i++) {
             userNumber.add(Integer.parseInt(inputValue.substring(i, i+1)));
         }
+        validateUserNumber(userNumber);
         return userNumber;
+    }
+
+    public boolean validateUserNumber(List<Integer> num) {
+        if (checkLength(num) && checkRange(num) && checkDuplication(num)) {
+            return true;
+        }
+        throw new IllegalArgumentException();
     }
 
     public boolean checkLength(List<Integer> num) {
