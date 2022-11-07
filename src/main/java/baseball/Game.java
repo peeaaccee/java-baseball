@@ -1,5 +1,7 @@
 package baseball;
 
+import camp.nextstep.edu.missionutils.Console;
+
 import java.util.List;
 
 public class Game {
@@ -7,6 +9,7 @@ public class Game {
     static final String NOTHING = "낫싱";
     static final String SOME_CORRECT = "%d볼 %d스트라이크\n";
     static final String ALL_CORRECT = "3스트라이크\n3개의 숫자를 모두 맞히셨습니다! 게임 종료";
+    static final String END_MESSAGE = "게임을 새로 시작하려면 1, 종료하려면 2를 입력하세요.";
 
     private ComputerNumber computer = new ComputerNumber();
     private User user = new User();
@@ -20,6 +23,11 @@ public class Game {
         System.out.println(START_MESSAGE);
         computerNumber = computer.makeRandomNumber();
         playGame();
+        do {
+            computerNumber = computer.makeComputerNumber();
+            playGame();
+            System.out.println(END_MESSAGE);
+        } while (isFinish());
     }
     private void playGame() {
         do {
@@ -40,6 +48,19 @@ public class Game {
             }
         }
     }
+
+    private boolean isFinish() {
+        int flag = Integer.parseInt(Console.readLine());
+
+        if (flag == 1) {
+            return true;
+        } else if (flag == 2) {
+            return false;
+        } else {
+            throw new IllegalArgumentException();
+        }
+    }
+
     private void printMessage(int strike, int ball) {
         if (strike == 3) {
             System.out.println(ALL_CORRECT);
